@@ -9,7 +9,8 @@ import * as route from '../constants/routes';
 
 export default function Main() {
   return (
-    <main>
+    <main className="main">
+      test
       <Switch>
         <Route to={route.HOME} component={Home} />
         <Route to={route.EVENTS} component={Events} />

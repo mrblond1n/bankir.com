@@ -1,0 +1,20 @@
+@mixin desctops {
+	@media screen and (max-width: $desctops) {
+		@content;
+	}
+}
+@mixin tablets {
+	@media screen and (max-width: $tablets) {
+		@content;
+	}
+}
+@mixin laptops {
+	@media screen and (max-width: $laptops) {
+		@content;
+	}
+}
+@mixin phones {
+	@media screen and (max-width: $phones) {
+		@content;
+	}
+}
