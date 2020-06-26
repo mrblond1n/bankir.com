@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { SIGNIN, SIGNUP } from '../constants/routes';
+import { SIGNIN, SIGNUP } from '../../constants/routes';
 
 export default function SignedOutLinks() {
   return (

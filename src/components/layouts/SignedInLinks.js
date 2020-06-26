@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ADD_EVENT, HOME, SETTINGS, EVENTS } from '../constants/routes';
+import { ADD_EVENT, HOME, SETTINGS, EVENTS } from '../../constants/routes';
 
 export default function SignedInLinks() {
   return (

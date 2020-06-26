@@ -4,7 +4,7 @@ import Home from '../pages/Home'
 import Events from '../pages/Events'
 import SignIn from '../auth/SignIn'
 import SignUp from '../auth/SignUp'
-import * as route from '../constants/routes';
+import * as route from '../../constants/routes';
 
 
 export default function Main() {
