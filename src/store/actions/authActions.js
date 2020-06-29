@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILED, SIGNOUT_SUCCESS, SIGNOUT_FAILED, SIGNUP_SUCCESS, SIGNUP_FAILED } from "../constants/types";
+import { LOGIN_SUCCESS, LOGIN_FAILED, SIGNOUT_SUCCESS, SIGNOUT_FAILED, SIGNUP_SUCCESS, SIGNUP_FAILED } from "../../constants/types";
 
 export const signIn = ({ email, password }) => {
   return (dispatch, getState, { getFirebase }) => {
