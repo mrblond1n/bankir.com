@@ -2,7 +2,8 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <div>
-    </div>
+    <section className="section">
+      <h1>Home</h1>
+    </section>
   )
 }

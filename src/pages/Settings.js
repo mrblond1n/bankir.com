@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Settings() {
   return (
-    <div>
-
-    </div>
+    <section className="section">
+      <h1>Settings</h1>
+    </section>
   )
 }
