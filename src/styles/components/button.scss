@@ -1,0 +1,12 @@
+.btn {
+	background: #fff;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0;
+	cursor: pointer;
+	width: 100%;
+	text-transform: uppercase;
+	font-weight: bolder;
+	&:disabled {
+		opacity: 0.7;
+	}
+}

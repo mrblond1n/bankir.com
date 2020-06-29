@@ -10,12 +10,11 @@ import * as route from '../../constants/routes';
 export default function Main() {
   return (
     <main className="main">
-      test
       <Switch>
-        <Route to={route.HOME} component={Home} />
-        <Route to={route.EVENTS} component={Events} />
-        <Route to={route.SIGNIN} component={SignIn} />
-        <Route to={route.SIGNUP} component={SignUp} />
+        <Route exact path={route.HOME} components={Home} />
+        <Route path={route.EVENTS} component={Events} />
+        <Route path={route.SIGNIN} component={SignIn} />
+        <Route path={route.SIGNUP} component={SignUp} />
       </Switch>
     </main>
   )
