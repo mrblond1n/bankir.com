@@ -11,8 +11,18 @@ export default function EventSummary({ event }) {
   const history = useHistory();
   const className = event.method === 'outcome' ? 'color-wrapper outcome' : 'color-wrapper income';
 
+
+  const translateTo = e => {
+    e.stopPropagation();
+    history.push(`event/${event.id}`)
+  }
+  const removeItem = e => {
+    e.stopPropagation();
+    dispatch(removeEvent(event.id))
+  }
+
   return (
-    <tr className="table__row" onClick={() => history.push(`event/${event.id}`)}>
+    <tr className="table__row" onClick={e => translateTo(e)}>
       <td className="table__item">
         <span>{event.tag}</span> <br />
         <span>{moment(event.addedAt.toDate()).calendar()}</span>
@@ -21,7 +31,7 @@ export default function EventSummary({ event }) {
         <span className={className}>{event.sum}</span>
       </td>
       <td className="table__item">
-        <button className="btn" onClick={() => dispatch(removeEvent(event.id))}>remove</button>
+        <button className="btn" onClick={e => removeItem(e)}>remove</button>
       </td>
     </tr>
   )

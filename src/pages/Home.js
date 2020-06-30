@@ -2,14 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from "redux";
-// import { Redirect } from 'react-router-dom';
+
 import EventsList from '../components/events/EventsList';
+import Statistic from '../components/Statistics';
 
 function Home({ events }) {
   return (
     <section className="section">
       <h1>Home</h1>
-      <EventsList events={events} />
+      <div className="container">
+        <Statistic events={events} />
+        <EventsList events={events} />
+      </div>
     </section>
   )
 }
