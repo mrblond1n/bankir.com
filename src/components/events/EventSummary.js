@@ -1,8 +1,11 @@
 import React from 'react';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { removeEvent } from '../../store/actions/eventActions';
 
 
 export default function EventSummary({ event }) {
+  const dispatch = useDispatch()
   return (
     <div className="card">
       <div className="card-content">
@@ -11,7 +14,7 @@ export default function EventSummary({ event }) {
           <span>{moment(event.addedAt.toDate()).calendar()}</span>
         </div>
         <span>{event.sum}</span>
-        <button onClick={() => console.log(event)}>remove</button>
+        <button onClick={() => dispatch(removeEvent(event.id))}>remove</button>
       </div>
     </div>
   )

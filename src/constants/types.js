@@ -4,5 +4,7 @@ export const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS';
 export const SIGNOUT_FAILED = 'SIGNOUT_FAILED';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+
 export const ADD_EVENT = 'ADD_EVENT';
+export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const CREATE_ERROR = 'CREATE_ERROR';
