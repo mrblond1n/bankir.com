@@ -1,7 +1,7 @@
 import { ADD_EVENT, CREATE_ERROR } from "../../constants/types";
 
 const INITIAL_STATE = {
-  projects: []
+  events: []
 }
 
 const projectReducer = (state = INITIAL_STATE, action) => {
