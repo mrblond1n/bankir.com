@@ -1,0 +1,34 @@
+.table {
+	border-collapse: collapse;
+	border: none;
+
+	&__row {
+		padding: 0.4rem 1rem;
+		border-radius: 0.3rem;
+		transition: 0.4s;
+	}
+	&__item {
+		padding: 0.2rem;
+		vertical-align: middle;
+		border-bottom: thin solid hsla(0, 0%, 100%, 0.12);
+	}
+
+	tbody .table__row {
+		&:hover {
+			cursor: pointer;
+			background: rgba(244, 244, 244, 0.2);
+		}
+	}
+}
+
+.color-wrapper {
+	color: $dark;
+	padding: 0.3rem;
+	border-radius: 0.2rem;
+	&.outcome {
+		background: $red;
+	}
+	&.income {
+		background: $green;
+	}
+}

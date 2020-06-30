@@ -6,16 +6,19 @@ import { removeEvent } from '../../store/actions/eventActions';
 
 export default function EventSummary({ event }) {
   const dispatch = useDispatch()
+  const className = event.method === 'outcome' ? 'color-wrapper outcome' : 'color-wrapper income';
   return (
-    <div className="card">
-      <div className="card-content">
-        <div>
-          <span>{event.tag} </span>
-          <span>{moment(event.addedAt.toDate()).calendar()}</span>
-        </div>
-        <span>{event.sum}</span>
-        <button onClick={() => dispatch(removeEvent(event.id))}>remove</button>
-      </div>
-    </div>
+    <tr className="table__row">
+      <td className="table__item">
+        <span>{event.tag}</span> <br />
+        <span>{moment(event.addedAt.toDate()).calendar()}</span>
+      </td>
+      <td className="table__item">
+        <span className={className}>{event.sum}</span>
+      </td>
+      <td className="table__item">
+        <button className="btn" onClick={() => dispatch(removeEvent(event.id))}>remove</button>
+      </td>
+    </tr>
   )
 }
