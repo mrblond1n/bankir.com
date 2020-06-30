@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 import Home from '../../pages/Home'
 import CreateEvent from '../../pages/CreateEvent'
+import EventDetail from "../events/EventDetail";
 import Settings from '../../pages/Settings'
 import SignIn from '../auth/SignIn'
 import SignUp from '../auth/SignUp'
@@ -16,6 +17,7 @@ export default function Main() {
         <PrivateRoute exact path={route.HOME} component={Home} />
         <PrivateRoute path={route.ADD_EVENT} component={CreateEvent} />
         <PrivateRoute path={route.SETTINGS} component={Settings} />
+        <PrivateRoute path={route.EVENT_DETAIL} component={EventDetail} />
         <Route path={route.SIGNIN} component={SignIn} />
         <Route path={route.SIGNUP} component={SignUp} />
       </Switch>

@@ -14,7 +14,7 @@ export default function EventsList({ events = INITIAL_STATE }) {
         </tr>
       </thead>
       <tbody className="tbody">
-        {events && events.map((event, i) => <EventSummary event={event} key={i} />)}
+        {events && events.map(event => <EventSummary event={event} key={event.id} />)}
       </tbody>
     </table>
   )
