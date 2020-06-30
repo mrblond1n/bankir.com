@@ -1,12 +1,29 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from "redux";
+import { useFirestoreConnect } from 'react-redux-firebase'
 
 import EventsList from '../components/events/EventsList';
 import Statistic from '../components/Statistics';
+import { useSelector } from 'react-redux';
 
-function Home({ events }) {
+export default function Home(props) {
+  const auth = useSelector(state => state.firebase.auth)
+  const events = useSelector((state) => state.firestore.ordered.events)
+  const startDate = new Date('06-01-2020')
+  const endDate = new Date('07-01-2020')
+
+  useFirestoreConnect([{
+    collection: 'events',
+    orderBy: ['addedAt', 'desc'],
+    where: [
+      ['authorId', '==', auth.uid],
+      ['addedAt', '>=', startDate],
+      ['addedAt', '<=', endDate],
+    ],
+  }
+  ])
+
+
+
   return (
     <section className="section">
       <h1>Home</h1>
@@ -17,30 +34,3 @@ function Home({ events }) {
     </section>
   )
 }
-
-
-const mapStateToProps = (state) => {
-  return {
-    auth: state.firebase.auth,
-    events: state.firestore.ordered.events
-  }
-}
-export default compose(connect(mapStateToProps),
-  firestoreConnect((props) => {
-    const date1 = new Date();
-    const date2 = new Date();
-
-    console.log(date1, date2)
-
-    if (!props.auth.uid) return []
-    return [
-      {
-        collection: 'events',
-        where: [
-          ['authorId', '==', props.auth.uid],
-          ['addedAd', '>=', date1],
-          ['addedAd', '<=', date2]
-        ]
-      }
-    ]
-  }))(Home);
