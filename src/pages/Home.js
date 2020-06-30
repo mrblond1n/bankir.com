@@ -11,8 +11,8 @@ function Home({ events }) {
     <section className="section">
       <h1>Home</h1>
       <div className="container">
-        <Statistic events={events} />
         <EventsList events={events} />
+        <Statistic events={events} />
       </div>
     </section>
   )
@@ -27,12 +27,19 @@ const mapStateToProps = (state) => {
 }
 export default compose(connect(mapStateToProps),
   firestoreConnect((props) => {
+    const date1 = new Date();
+    const date2 = new Date();
+
+    console.log(date1, date2)
+
     if (!props.auth.uid) return []
     return [
       {
         collection: 'events',
         where: [
-          ['authorId', '==', props.auth.uid]
+          ['authorId', '==', props.auth.uid],
+          ['addedAd', '>=', date1],
+          ['addedAd', '<=', date2]
         ]
       }
     ]
