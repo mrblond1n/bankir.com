@@ -1,12 +1,19 @@
 .btn {
-	background: #fff;
+	background: transparent;
 	padding: 0.5rem 1rem;
 	margin: 1rem 0;
 	cursor: pointer;
-	width: 100%;
 	text-transform: uppercase;
 	font-weight: bolder;
+	color: inherit;
 	&:disabled {
 		opacity: 0.7;
+	}
+	&__icon {
+		width: auto;
+		background: transparent;
+	}
+	&__light {
+		background: #fff;
 	}
 }

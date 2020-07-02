@@ -3,6 +3,8 @@ import moment from 'moment'
 import 'moment/locale/ru'
 import { useSelector, useDispatch } from 'react-redux';
 import { setDate } from '../../store/actions/filterActions';
+import ChangeMonth from './ButtonChange';
+import ButtonSelect from './ButtonSelect';
 
 export default function Filter() {
   moment.locale('ru')
@@ -22,10 +24,10 @@ export default function Filter() {
   }
 
   return (
-    <div>
-      <button onClick={() => decrement()}>prev</button>
-      {getMonth()}
-      <button onClick={() => increment()}>next</button>
+    <div className="filter">
+      <ChangeMonth onClick={decrement} />
+      <ButtonSelect title={getMonth()} />
+      <ChangeMonth rotate onClick={increment} />
     </div>
   )
 }
