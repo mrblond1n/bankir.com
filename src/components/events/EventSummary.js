@@ -3,6 +3,8 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { removeEvent } from '../../store/actions/eventActions';
 import { useHistory } from 'react-router-dom';
+import Icon from '@mdi/react';
+import { mdiDelete } from '@mdi/js';
 
 
 export default function EventSummary({ event }) {
@@ -31,7 +33,9 @@ export default function EventSummary({ event }) {
         <span className={className}>{event.sum}</span>
       </td>
       <td className="table__item">
-        <button className="btn" onClick={e => removeItem(e)}>remove</button>
+        <button className="btn" onClick={e => removeItem(e)}>
+          <Icon path={mdiDelete} size={1} />
+        </button>
       </td>
     </tr>
   )

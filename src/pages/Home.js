@@ -37,7 +37,7 @@ export default function Home() {
         break;
       case 'all_time':
         setStartDate(new Date(0))
-        setEndDate(new Date(3000, 1, 1))
+        setEndDate(new Date(3000, 1,))
         break;
 
       default:

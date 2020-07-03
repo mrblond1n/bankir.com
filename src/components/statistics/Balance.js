@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 
 export default function Balance({ events }) {
@@ -10,6 +11,8 @@ export default function Balance({ events }) {
   const [capital, setCapital] = useState(0);
 
   const leftDays = 33 - new Date(new Date().getFullYear(), new Date().getMonth(), 33).getDate() - new Date().getDate() || 1;
+
+  const filter = useSelector(state => state.filter.activeFilter)
 
   useEffect(() => {
     setCapital(30000);
@@ -39,11 +42,11 @@ export default function Balance({ events }) {
 
   return (
     <div className='card'>
-      <div>Capital: {capital}</div>
-      <div>Расходы: {totalOutcome}</div>
-      <div>Доходы: {totalIncome}</div>
-      <div>Баланс на месяц: {balance}</div>
-      <div>Баланс на день: {balanceDay}</div>
+      {filter.name === 'month' && <div>Capital: {capital} ₽</div>}
+      <div>Расходы: {totalOutcome} ₽</div>
+      <div>Доходы: {totalIncome} ₽</div>
+      {filter.name === 'month' && <div>Баланс на месяц: {balance} ₽</div>}
+      {filter.name === 'month' && <div>Баланс на день: {balanceDay} ₽</div>}
     </div>
   )
 }
