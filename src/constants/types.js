@@ -12,3 +12,4 @@ export const CREATE_ERROR = 'CREATE_ERROR';
 export const SET_DATE = 'SET_DATE';
 export const SET_START_DATE = 'SET_START_DATE';
 export const SET_END_DATE = 'SET_END_DATE';
+export const SET_FILTER = 'SET_FILTER'

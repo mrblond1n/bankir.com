@@ -47,21 +47,26 @@
 }
 
 /* Links inside the dropdown */
-.dropdown-content div {
+.dropdown-content .dropdown-item {
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
-	display: block;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content div:hover {
+.dropdown-content .dropdown-item:hover {
 	background-color: #f1f1f1;
+	cursor: pointer;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
 	display: block;
+}
+.dropdown-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
