@@ -8,7 +8,7 @@ export default function ButtonSelect({ title }) {
   const filterArr = [
     { name: 'week', title: 'Неделя' },
     { name: 'month', title: 'Месяц' },
-    { name: 'three_month', title: 'Три месяца' },
+    { name: 'months', title: 'Три месяца' },
     { name: 'year', title: 'Год' },
     { name: 'all_time', title: 'Всё время' }
   ]
