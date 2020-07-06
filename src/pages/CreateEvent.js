@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { createEvent } from '../store/actions/eventActions';
+import { useHistory } from 'react-router-dom';
+import { HOME } from '../constants/routes';
 
 export default function CreateEvent() {
   const [sum, setSum] = useState('');
   const [method, setMethod] = useState('outcome');
   const [tag, setTag] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const submitForm = e => {
     e.preventDefault();
     dispatch(createEvent({ sum, tag, method }))
+    history.push(HOME);
   }
 
   const disabled = !sum || !method || !tag;
