@@ -75,8 +75,7 @@ export default function StatisticDiagram({ events }) {
 
   return (
     <div className="card">
-      <Doughnut data={data} width={30}
-        height={20} options={options} />
+      <Doughnut height={300} data={data} options={options} />
     </div>
   )
 }
