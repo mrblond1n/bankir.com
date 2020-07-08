@@ -1,9 +1,10 @@
 import React from 'react'
+import Button from '../Button'
 
-export default function ButtonChange({ rotate, onClick }) {
+export default function ButtonChange({ rotate, onHandler, dark, disabled }) {
   return (
-    <button className="btn btn__icon" onClick={() => onClick()}>
+    <Button dark={dark} onHandler={onHandler} disabled={disabled}>
       <div className="icon icon__arrow" style={rotate && { transform: 'rotate(315deg)' }}></div>
-    </button>
+    </Button>
   )
 }

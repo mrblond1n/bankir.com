@@ -55,9 +55,9 @@ export default function Filter() {
 
   return (
     <div className="filter">
-      {!selectAllTime && <ChangeMonth onClick={decrement} />}
+      {!selectAllTime && <ChangeMonth dark onHandler={decrement} />}
       <ButtonSelect title={title} />
-      {!selectAllTime && <ChangeMonth rotate onClick={increment} />}
+      {!selectAllTime && <ChangeMonth dark rotate onHandler={increment} />}
     </div>
   )
 }
