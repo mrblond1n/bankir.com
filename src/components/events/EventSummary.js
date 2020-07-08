@@ -27,7 +27,7 @@ export default function EventSummary({ event }) {
     <tr className="table__row" onClick={e => translateTo(e)}>
       <td className="table__item">
         <span>{event.tag}</span> <br />
-        <span>{moment(event.addedAt.toDate()).calendar()}</span>
+        <span>{moment(event.date.toDate()).format('DD.MM.YYYY')}</span>
       </td>
       <td className="table__item">
         <span className={className}>{event.sum}</span>

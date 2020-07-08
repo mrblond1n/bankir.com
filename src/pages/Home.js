@@ -49,11 +49,11 @@ export default function Home() {
 
   useFirestoreConnect([{
     collection: 'events',
-    orderBy: ['addedAt', 'desc'],
+    orderBy: ['date', 'desc'],
     where: [
       ['authorId', '==', auth.uid],
-      ['addedAt', '>=', startDate],
-      ['addedAt', '<=', endDate],
+      ['date', '>=', startDate],
+      ['date', '<=', endDate],
     ],
   }
   ])

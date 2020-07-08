@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { setColor, hexToRGB } from '../../FunctionLibrary';
+import { setColor, hexToRGB } from '../../functions';
 
 export default function StatisticDiagram({ events }) {
   const [data, setData] = useState({});

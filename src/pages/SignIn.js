@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn } from '../../store/actions/authActions';
+import { signIn } from '../store/actions/authActions';
 import { Redirect } from 'react-router-dom';
-import { HOME } from '../../constants/routes';
+import { HOME } from '../constants/routes';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');

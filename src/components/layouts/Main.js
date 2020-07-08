@@ -4,10 +4,10 @@ import Home from '../../pages/Home'
 import CreateEvent from '../../pages/CreateEvent'
 import EventDetail from "../events/EventDetail";
 import Settings from '../../pages/Settings'
-import SignIn from '../auth/SignIn'
-import SignUp from '../auth/SignUp'
+import SignIn from '../../pages/SignIn'
+import SignUp from '../../pages/SignUp'
 import * as route from '../../constants/routes';
-import PrivateRoute from '../auth/PrivateRoute';
+import PrivateRoute from '../../config/PrivateRoute';
 
 
 export default function Main() {

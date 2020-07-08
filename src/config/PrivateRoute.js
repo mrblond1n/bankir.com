@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router'
 import { useSelector } from 'react-redux'
-import { SIGNIN } from '../../constants/routes'
+import { SIGNIN } from '../constants/routes'
 
 const PrivateRoute = ({
   component: Component,

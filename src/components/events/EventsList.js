@@ -4,6 +4,8 @@ import EventSummary from "./EventSummary";
 const INITIAL_STATE = []
 
 export default function EventsList({ events = INITIAL_STATE }) {
+
+  if (!events.length) return <div>No data</div>
   return (
     <table className="table">
       <thead className="thead">

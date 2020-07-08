@@ -5,7 +5,6 @@ export const createEvent = (event) => (dispatch, getState, { getFirebase, getFir
   const authorId = getState().firebase.auth.uid
   firestore.collection('events').add({
     ...event,
-    addedAt: new Date(),
     authorId
   }).then(() => dispatch({ type: ADD_EVENT, event }))
     .catch(error => dispatch({ type: CREATE_ERROR, error }))
