@@ -29,7 +29,7 @@ export default function EventsList({ events = INITIAL_STATE }) {
     <table className="table">
       <thead className="thead">
         <tr className="table__row">
-          {headers.map(elem => <th className="table__item">{elem}</th>)}
+          {headers.map(elem => <th key={elem} className="table__item">{elem}</th>)}
         </tr>
       </thead>
       <tbody className="tbody">

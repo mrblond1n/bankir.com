@@ -4,14 +4,22 @@ import SideBar from './components/layouts/SideBar';
 import Main from './components/layouts/Main';
 import './index.scss'
 
+import MomentUtils from '@date-io/moment';
+
+import {
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
+
 function App() {
   return (
-    <BrowserRouter>
-      <div className="wrapper">
-        <SideBar />
-        <Main />
-      </div>
-    </BrowserRouter>
+    <MuiPickersUtilsProvider utils={MomentUtils}>
+      <BrowserRouter>
+        <div className="wrapper">
+          <SideBar />
+          <Main />
+        </div>
+      </BrowserRouter>
+    </MuiPickersUtilsProvider>
   );
 }
 
