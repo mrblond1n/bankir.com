@@ -9,6 +9,9 @@ const showRows = 6;
 export default function EventsList({ events = INITIAL_STATE }) {
 
   const [currentEvents, setCurrentEvents] = useState(0)
+
+  if (!events.length) return <div>No data</div>;
+
   const visibleEvents = events.slice(currentEvents, currentEvents + showRows);
   const totalPages = Math.ceil((events.length) / 6)
   let arrNumbers = []
@@ -20,14 +23,13 @@ export default function EventsList({ events = INITIAL_STATE }) {
   const nextEvents = () => setCurrentEvents(currentEvents + showRows)
   const disabled = (right) => right ? currentEvents >= events.length - showRows : currentEvents === 0
 
-  if (!events.length) return <div>No data</div>
+  const headers = ['Date', 'Sum', 'Action']
+
   return (
     <table className="table">
       <thead className="thead">
         <tr className="table__row">
-          <th className="table__item">Date</th>
-          <th className="table__item">Sum</th>
-          <th className="table__item">Action</th>
+          {headers.map(elem => <th className="table__item">{elem}</th>)}
         </tr>
       </thead>
       <tbody className="tbody">
@@ -36,7 +38,6 @@ export default function EventsList({ events = INITIAL_STATE }) {
       <tfoot className='tfoot'>
         <tr className="table__row">
           <td className='table__item'>
-            {/* <Button dark onHandler={prevEvents} disabled={disabled()}>Left</Button> */}
             <ButtonChange dark onHandler={prevEvents} disabled={disabled()} />
           </td>
           <td className='table__item'>
@@ -46,7 +47,6 @@ export default function EventsList({ events = INITIAL_STATE }) {
               </Button>)}
           </td>
           <td className='table__item'>
-            {/* <Button dark onHandler={nextEvents} disabled={disabled('right')}>Right</Button> */}
             <ButtonChange dark onHandler={nextEvents} disabled={disabled('right')} rotate />
           </td>
         </tr>
