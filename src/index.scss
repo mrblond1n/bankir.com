@@ -9,3 +9,17 @@
 @import "./styles/components/table.scss";
 @import "./styles/components/icon.scss";
 @import "./styles/components/filter.scss";
+
+.color-wrapper {
+	color: $dark;
+	padding: 0.3rem;
+	border-radius: 0.2rem;
+
+	&.outcome {
+		background: $red;
+	}
+
+	&.income {
+		background: $green;
+	}
+}
