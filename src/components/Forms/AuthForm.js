@@ -4,11 +4,11 @@ import { TextField, Button } from '@material-ui/core'
 
 export default function AuthForm({ state, actionWithUser }) {
   const [user, setUser] = useState(state);
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(false)
   const fields = Object.keys(state).map(el => el)
 
   useEffect(() => {
-    if (user.confirmPassword !== user.password) return setDisabled(true)
+    if (user.confirmPassword && user.confirmPassword !== user.password) return setDisabled(true);
     if (Object.values(user).filter(value => !value).length) return setDisabled(true)
     return setDisabled(false)
   }, [user])

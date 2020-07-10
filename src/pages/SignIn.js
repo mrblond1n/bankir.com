@@ -13,11 +13,11 @@ export default function SignIn() {
   const authError = useSelector(state => state.auth.authError)
   const auth = useSelector(state => state.firebase.auth)
   if (auth.uid) return <Redirect to={HOME} />;
-  const signUser = user => dispatch(signIn({ user }))
+  const signInUser = user => dispatch(signIn(user))
   return (
     <Section column>
       <h1 className="title">Авторизация</h1>
-      <AuthForm state={INITIAL_STATE} actionWithUser={signUser} />
+      <AuthForm state={INITIAL_STATE} actionWithUser={signInUser} />
       <div>{authError}</div>
     </Section>
   )
