@@ -1,20 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-
-import { SIGNIN, SIGNUP, HOME, SETTINGS, ADD_EVENT } from '../constants/routes';
-import Logo from '../components/Logo'
-
 import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
 import {
   List, Divider, ListItem, makeStyles, ListItemText, useTheme,
   Toolbar, Typography, AppBar, CssBaseline, Drawer, Hidden, IconButton,
 } from "@material-ui/core";
+
+import { SIGNIN, SIGNUP, HOME, SETTINGS, ADD_EVENT } from '../constants/routes';
+import Logo from '../components/Logo'
 import { signOut } from '../store/actions/authActions';
 
 const drawerWidth = 180;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -52,8 +50,8 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const dispatch = useDispatch()
   const signedInLinks = [
     { type: 'link', title: 'Главная', link: HOME },
     { type: 'link', title: 'Добавить', link: ADD_EVENT },
@@ -66,29 +64,24 @@ function ResponsiveDrawer(props) {
   ]
   const auth = useSelector(state => state.firebase.auth)
   const links = auth.uid ? signedInLinks : signedOutLinks
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   const drawer = (
     <div>
       <Logo />
       <Divider />
       <List color="error">
-        {links.map(({ link, title, type }) => (
-          <ListItem
-            exact
-            button
-            component={NavLink}
-            key={link}
-            to={link}
-            className="nav__link"
-          >
-            <ListItemText primary={title} />
-          </ListItem>
-        ))}
+        {links.map(({ link, title, type, handler }) =>
+          type === 'link' ?
+            <ListItem exact button component={NavLink} key={link} to={link} className="nav__link">
+              <ListItemText primary={title} />
+            </ListItem> :
+            <ListItem button key={link} className="nav__link" onClick={() => dispatch(handler())}>
+              <ListItemText primary={title} />
+            </ListItem>
+        )}
       </List>
-    </div>
+    </div >
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
