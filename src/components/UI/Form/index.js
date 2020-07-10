@@ -1,16 +1,15 @@
 import React from 'react'
 import './style.scss'
 
-export default function Section(props) {
-  let classList = ['section']
+export default function Form(props) {
+  let classList = ['form']
   Object.entries(props).forEach(([key, value]) => {
     if (key === 'onSubmit' || key === 'children') return;
     value && classList.push(`${classList[0]}--${key}`)
   });
-
   return (
-    <section className={classList.join(' ')}>
+    <form className={classList.join(' ')} onSubmit={props.onSubmit}>
       {props.children}
-    </section>
+    </form>
   )
 }
