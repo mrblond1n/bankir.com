@@ -3,7 +3,7 @@ import React from 'react';
 import moment from 'moment'
 import 'moment/locale/ru'
 import { useSelector, useDispatch } from 'react-redux';
-import { setDate, setFilter } from '../../store/actions/filterActions';
+import { setDate, setFilter } from '../store/actions/filterActions';
 import { IconButton, Select, MenuItem } from '@material-ui/core';
 import Icon from '@mdi/react'
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';

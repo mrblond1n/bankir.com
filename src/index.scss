@@ -1,25 +1,31 @@
 @import "./styles/default.scss";
 @import "./styles/variables.scss";
 @import "./styles/mixins.scss";
-@import "./styles/layouts.scss";
-
-@import "./styles/components/form.scss";
-@import "./styles/components/title.scss";
-@import "./styles/components/button.scss";
-@import "./styles/components/table.scss";
-@import "./styles/components/icon.scss";
-@import "./styles/components/filter.scss";
 
 .color-wrapper {
-	color: $dark;
-	padding: 0.3rem;
-	border-radius: 0.2rem;
+  color: $dark;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
 
-	&.outcome {
-		background: $red;
-	}
+  &.outcome {
+    background: $red;
+  }
 
-	&.income {
-		background: $green;
-	}
+  &.income {
+    background: $green;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  color: black;
+
+  h1 {
+    text-transform: uppercase;
+    font-family: "Archivo Narrow", sans-serif;
+  }
 }

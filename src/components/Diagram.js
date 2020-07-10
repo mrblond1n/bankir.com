@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { setColor, hexToRGB } from '../../functions';
+import { setColor, hexToRGB } from '../functions';
 
-export default function StatisticDiagram({ events }) {
+const INITIAL_STATE = [];
+
+export default function StatisticDiagram({ events = INITIAL_STATE }) {
   const [data, setData] = useState({});
   const [options, setOptions] = useState({});
   const [finances, setFinances] = useState(events);
@@ -75,7 +77,7 @@ export default function StatisticDiagram({ events }) {
 
   return (
     <div className="card">
-      <Doughnut height={300} data={data} options={options} />
+      <Doughnut height={200} data={data} options={options} />
     </div>
   )
 }

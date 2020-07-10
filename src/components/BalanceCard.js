@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 
+const INITIAL_STATE = []
 
-export default function Balance({ events }) {
+export default function Balance({ events = INITIAL_STATE }) {
   const [defaultFinances, setDefaultFinances] = useState([]);
   const [totalOutcome, setTotalOutcome] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);

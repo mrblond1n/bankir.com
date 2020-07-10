@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import moment from 'moment';
-import { removeEvent } from '../../store/actions/eventActions';
+import { removeEvent } from '../store/actions/eventActions';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {

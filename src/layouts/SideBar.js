@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { SIGNIN, SIGNUP, HOME, SETTINGS, ADD_EVENT } from '../../constants/routes';
-import Logo from '../Logo'
+import { SIGNIN, SIGNUP, HOME, SETTINGS, ADD_EVENT } from '../constants/routes';
+import Logo from '../components/Logo'
 
 import PropTypes from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -11,8 +11,9 @@ import {
   List, Divider, ListItem, makeStyles, ListItemText, useTheme,
   Toolbar, Typography, AppBar, CssBaseline, Drawer, Hidden, IconButton,
 } from "@material-ui/core";
+import { signOut } from '../store/actions/authActions';
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +58,7 @@ function ResponsiveDrawer(props) {
     { type: 'link', title: 'Главная', link: HOME },
     { type: 'link', title: 'Добавить', link: ADD_EVENT },
     { type: 'link', title: 'Настройки', link: SETTINGS },
-    { type: 'link', title: 'Выход', link: SIGNIN }
+    { type: 'action', title: 'Выход', link: SIGNIN, handler: signOut }
   ]
   const signedOutLinks = [
     { type: 'link', title: 'Авторизация', link: SIGNIN },
@@ -74,8 +75,15 @@ function ResponsiveDrawer(props) {
       <Logo />
       <Divider />
       <List color="error">
-        {links.map(({ link, title }) => (
-          <ListItem exact button component={NavLink} key={link} to={link} className="nav__link">
+        {links.map(({ link, title, type }) => (
+          <ListItem
+            exact
+            button
+            component={NavLink}
+            key={link}
+            to={link}
+            className="nav__link"
+          >
             <ListItemText primary={title} />
           </ListItem>
         ))}

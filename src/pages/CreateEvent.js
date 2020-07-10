@@ -4,8 +4,9 @@ import { createEvent } from '../store/actions/eventActions';
 import { useHistory } from 'react-router-dom';
 import { HOME } from '../constants/routes';
 
-import { InputLabel, Select, MenuItem, Card, Button, CardContent, TextField } from '@material-ui/core';
+import { InputLabel, Select, MenuItem, Card, Button, CardContent, TextField, Grid } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
+import Section from '../components/UI/Section';
 
 export default function CreateEvent() {
   const selectedElems = [
@@ -29,25 +30,27 @@ export default function CreateEvent() {
   const disabled = !sum || !method || !tag;
 
   return (
-    <section className="section">
+    <Section column>
       <h1 className="title">Create Event</h1>
       <Card>
         <CardContent>
           <form className="form" onSubmit={submitForm}>
-            <KeyboardDatePicker disableToolbar variant="inline" margin="normal" value={date} onChange={setDate} />
-            <InputLabel id="label">Тип</InputLabel>
-            <Select labelId="label" id="select" value={method.name}>
-              {selectedElems.map(el =>
-                <MenuItem value={el.name} key={el.name} onClick={() => setMethod(el)}>
-                  {el.title}
-                </MenuItem>)}
-            </Select>
-            <TextField label="Сумма" onChange={e => setSum(e.target.value)} />
-            <TextField label="Тег" onChange={e => setTag(e.target.value)} />
-            <Button color="primary" type="submit" disabled={disabled}>Отправить</Button>
+            <Grid direction="column" container>
+              <KeyboardDatePicker disableToolbar variant="inline" margin="normal" value={date} onChange={setDate} />
+              <InputLabel id="label">Тип</InputLabel>
+              <Select labelId="label" id="select" value={method.name}>
+                {selectedElems.map(el =>
+                  <MenuItem value={el.name} key={el.name} onClick={() => setMethod(el)}>
+                    {el.title}
+                  </MenuItem>)}
+              </Select>
+              <TextField label="Сумма" onChange={e => setSum(e.target.value)} />
+              <TextField label="Тег" onChange={e => setTag(e.target.value)} />
+              <Button color="primary" type="submit" disabled={disabled}>Отправить</Button>
+            </Grid>
           </form>
         </CardContent>
       </Card>
-    </section >
+    </Section >
   )
 }

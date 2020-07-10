@@ -1,8 +1,7 @@
 import React from 'react'
-import img from '../../assets/logo.svg'
-import './index.scss'
+import img from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
-import { HOME } from '../../constants/routes'
+import { HOME } from '../constants/routes'
 
 
 export default function Logo() {

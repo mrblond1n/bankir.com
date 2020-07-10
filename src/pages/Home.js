@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useFirestoreConnect } from 'react-redux-firebase'
 
-import EventsList from '../components/events/EventsList';
-import Statistic from '../components/Statistics';
+import EventsList from '../components/EventsList';
+import BalanceCard from '../components/BalanceCard';
+import Diagram from '../components/Diagram'
 import { useSelector } from 'react-redux';
 import Filter from '../components/Filter';
+import Grid from '@material-ui/core/Grid';
 
 import moment from 'moment';
+import Section from '../components/UI/Section';
 
 export default function Home() {
   const auth = useSelector(state => state.firebase.auth)
@@ -57,15 +60,20 @@ export default function Home() {
     ],
   }
   ])
-
   return (
-    <section className="section">
+    <Section container column>
       <h1>Home</h1>
       <Filter />
-      <div className="container">
-        <EventsList events={events} />
-        <Statistic events={events} />
-      </div>
-    </section>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          <EventsList events={events} />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Diagram events={events} />
+          <BalanceCard events={events} />
+        </Grid>
+      </Grid>
+    </Section>
+
   )
 }

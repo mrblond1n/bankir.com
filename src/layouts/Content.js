@@ -1,13 +1,13 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
-import Home from '../../pages/Home'
-import CreateEvent from '../../pages/CreateEvent'
-import EditorEvent from "../../pages/EditorEvent";
-import Settings from '../../pages/Settings'
-import SignIn from '../../pages/SignIn'
-import SignUp from '../../pages/SignUp'
-import * as route from '../../constants/routes';
-import PrivateRoute from '../../config/PrivateRoute';
+import Home from '../pages/Home'
+import CreateEvent from '../pages/CreateEvent'
+import EditorEvent from "../pages/EditorEvent";
+import Settings from '../pages/Settings'
+import SignIn from '../pages/SignIn'
+import SignUp from '../pages/SignUp'
+import * as route from '../constants/routes';
+import PrivateRoute from '../functions/PrivateRoute';
 
 
 export default function Main() {
