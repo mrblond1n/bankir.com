@@ -10,9 +10,10 @@ import * as route from '../constants/routes';
 import PrivateRoute from '../functions/PrivateRoute';
 
 
-export default function Main() {
+export default function Main({ classes }) {
   return (
-    <main className="main">
+    <main className={classes.content}>
+      <div className={classes.toolbar} />
       <Switch>
         <PrivateRoute exact path={route.HOME} component={Home} />
         <PrivateRoute path={route.ADD_EVENT} component={CreateEvent} />

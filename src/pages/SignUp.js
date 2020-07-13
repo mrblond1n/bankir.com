@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { HOME } from '../constants/routes';
 import Section from '../components/UI/Section';
 import AuthForm from '../components/Forms/AuthForm';
+import { Typography } from '@material-ui/core';
 
 const INITIAL_STATE = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
 
@@ -16,7 +17,9 @@ export default function SignUp() {
   const signUpUser = user => dispatch(signUp(user))
   return (
     <Section column>
-      <h1 className="title">Регистрация</h1>
+      <Typography variant="h3" component="h1" gutterBottom>
+        Регистрация
+      </Typography>
       <AuthForm state={INITIAL_STATE} actionWithUser={signUpUser} />
       <div>{authError}</div>
     </Section>

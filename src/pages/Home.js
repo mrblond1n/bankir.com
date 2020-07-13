@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 
 import moment from 'moment';
 import Section from '../components/UI/Section';
+import { Typography } from '@material-ui/core';
 
 export default function Home() {
   const auth = useSelector(state => state.firebase.auth)
@@ -62,7 +63,12 @@ export default function Home() {
   ])
   return (
     <Section container column>
-      <h1>Home</h1>
+      <Typography variant="h3" component="h1" gutterBottom>
+        Последние события
+      </Typography>
+      {filter.name !== 'all_time' && <Typography variant="h6" component="h2" gutterBottom>
+        {`${moment(startDate).format('DD.MM.YY')} - ${moment(endDate).format('DD.MM.YY')}`}
+      </Typography>}
       <Filter />
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>

@@ -6,7 +6,7 @@ import { HOME } from '../constants/routes';
 
 import EventForm from '../components/Forms/EventForm'
 
-import { Card, CardContent, } from '@material-ui/core';
+import { Card, CardContent, Typography, } from '@material-ui/core';
 import Section from '../components/UI/Section';
 import { useSelector } from 'react-redux';
 
@@ -26,7 +26,9 @@ export default function EditorEvent({ match }) {
 
   return (
     <Section column>
-      <h1 className="title">Редакитровать платеж</h1>
+      <Typography variant="h3" component="h1" gutterBottom>
+        Редактирование
+      </Typography>
       <Card>
         <CardContent>
           <EventForm state={event} actionWithEvent={editEvent} />
