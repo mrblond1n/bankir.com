@@ -16,6 +16,7 @@ import {
 import { ReactReduxFirebaseProvider, getFirebase, isLoaded } from "react-redux-firebase";
 import fbConfig from "./config/fbConfig";
 import firebase from "firebase/app";
+import { Backdrop, makeStyles, CircularProgress } from "@material-ui/core";
 
 const middleware = [thunk.withExtraArgument({ getFirebase, getFirestore })];
 
@@ -37,10 +38,18 @@ const rrfProps = {
   sessions: 'sessions'
 }
 
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
 
 function AuthIsLoaded({ children }) {
+  const classes = useStyles();
   const auth = useSelector(state => state.firebase.auth)
-  if (!isLoaded(auth)) return <div>Loading Screen...</div>;
+  const backdrop = <Backdrop className={classes.backdrop} open> <CircularProgress color="inherit" /> </Backdrop>;
+  if (!isLoaded(auth)) return backdrop
   return children
 }
 
