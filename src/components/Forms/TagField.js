@@ -2,11 +2,18 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
+import { useSelector, useDispatch } from 'react-redux';
+import { addTag } from '../../store/actions/eventActions';
 
 const filter = createFilterOptions();
 
-export default function FreeSoloCreateOption() {
+export default function FreeSoloCreateOption({ method }) {
   const [value, setValue] = React.useState(null);
+  const tags = useSelector(state => state.events.tags)
+  const currentTags = tags.filter(tag => tag.method === method);
+  const dispatch = useDispatch();
+
+
   return (
     <Autocomplete
       value={value}
@@ -16,12 +23,14 @@ export default function FreeSoloCreateOption() {
             title: newValue,
           });
           // add newValue to server
+          dispatch(addTag({ title: newValue, method }))
         } else if (newValue && newValue.inputValue) {
           // Create a new value from the user input
           setValue({
             title: newValue.inputValue,
           });
           //add newValue.inputValue to server
+          dispatch(addTag({ title: newValue.inputValue, method }))
         } else {
           setValue(newValue);
         }
@@ -41,8 +50,8 @@ export default function FreeSoloCreateOption() {
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys
-      id="free-solo-with-text-demo"
-      options={outcomeArr}
+      id="tag"
+      options={currentTags}
       getOptionLabel={(option) => {
         // Value selected with enter, right from the input
         if (typeof option === 'string') {
@@ -64,19 +73,3 @@ export default function FreeSoloCreateOption() {
     />
   );
 }
-
-const outcomeArr = [
-  { title: "Супермаркеты", method: "outcome" },
-  { title: "Отдых и развлечения", method: "outcome" },
-  { title: "Транспорт", method: "outcome" },
-  { title: "Образование", method: "outcome" },
-  { title: "Красота и здоровье", method: "outcome" },
-  { title: "ЖКХ", method: "outcome" },
-  { title: "Связь и коммуникации", method: "outcome" },
-  { title: "Дом и ремонт", method: "outcome" },
-  { title: "Рестораны и кафе", method: "outcome" },
-  { title: "Госуслуги", method: "outcome" },
-  { title: "Перевод и снятие наличных", method: "outcome" },
-  { title: "Другое", method: "outcome" },
-  { title: "Одежда и аксессуары", method: "outcome" }
-]

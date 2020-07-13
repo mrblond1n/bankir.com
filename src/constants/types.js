@@ -9,6 +9,7 @@ export const ADD_EVENT = 'ADD_EVENT';
 export const REMOVE_EVENT = 'REMOVE_EVENT';
 export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const CREATE_ERROR = 'CREATE_ERROR';
+export const ADD_TAG = 'ADD_TAG';
 
 export const SET_DATE = 'SET_DATE';
 export const SET_START_DATE = 'SET_START_DATE';

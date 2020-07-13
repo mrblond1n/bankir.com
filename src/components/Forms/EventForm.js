@@ -40,7 +40,7 @@ export default function EventForm({ state, actionWithEvent }) {
         </Select>
         <TextField label="Сумма" id="sum" onChange={e => changeEventState(e)} defaultValue={event.sum} />
         <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={event.tag} />
-        <TagField />
+        <TagField method={event.method} />
         <Button type="submit" color='primary' disabled={disabled}>Отправить</Button>
       </Grid>
     </Form>
