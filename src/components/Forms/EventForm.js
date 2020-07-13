@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Form from '../UI/Form'
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import { InputLabel, Select, MenuItem, Button, TextField, Grid } from '@material-ui/core';
+import TagField from './TagField'
 import moment from 'moment'
 
 export default function EventForm({ state, actionWithEvent }) {
@@ -39,6 +40,7 @@ export default function EventForm({ state, actionWithEvent }) {
         </Select>
         <TextField label="Сумма" id="sum" onChange={e => changeEventState(e)} defaultValue={event.sum} />
         <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={event.tag} />
+        <TagField />
         <Button type="submit" color='primary' disabled={disabled}>Отправить</Button>
       </Grid>
     </Form>
