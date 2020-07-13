@@ -17,7 +17,7 @@ export default function Main() {
         <PrivateRoute exact path={route.HOME} component={Home} />
         <PrivateRoute path={route.ADD_EVENT} component={CreateEvent} />
         <PrivateRoute path={route.SETTINGS} component={Settings} />
-        <PrivateRoute path={route.EVENT_DETAIL} component={EditorEvent} />
+        <PrivateRoute exact path={route.EVENT_DETAIL} component={EditorEvent} />
         <Route path={route.SIGNIN} component={SignIn} />
         <Route path={route.SIGNUP} component={SignUp} />
       </Switch>

@@ -19,7 +19,7 @@ export default function EventForm({ state, actionWithEvent }) {
     e.preventDefault();
     actionWithEvent({ ...event, date: moment(event.date).toDate() })
   }
-  const defaultValue = e => event[e.target.id]
+
   const selectedElems = [
     { name: 'outcome', title: 'Расходы' },
     { name: 'income', title: 'Доходы' }
@@ -37,8 +37,8 @@ export default function EventForm({ state, actionWithEvent }) {
             </MenuItem>
           )}
         </Select>
-        <TextField label="Сумма" id="sum" onChange={e => changeEventState(e)} defaultValue={e => defaultValue(e)} />
-        <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={e => defaultValue(e)} />
+        <TextField label="Сумма" id="sum" onChange={e => changeEventState(e)} defaultValue={event.sum} />
+        <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={event.tag} />
         <Button type="submit" color='primary' disabled={disabled}>Отправить</Button>
       </Grid>
     </Form>

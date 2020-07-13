@@ -109,7 +109,7 @@ export default function CustomPaginationActionsTable({ events = INITIAL_STATE })
   }
   const translateTo = (e, id) => {
     e.stopPropagation();
-    history.push(`event/${id}`)
+    history.push(`events/${id}`)
   }
 
 
