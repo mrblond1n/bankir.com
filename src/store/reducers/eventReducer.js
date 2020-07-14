@@ -1,4 +1,4 @@
-import { ADD_EVENT, CREATE_ERROR, UPDATE_EVENT, ADD_TAG } from "../../constants/types";
+import { ADD_EVENT, UPDATE_EVENT, ADD_TAG } from "../../constants/types";
 
 const INITIAL_STATE = {
   events: [],
@@ -27,8 +27,6 @@ const projectReducer = (state = INITIAL_STATE, action) => {
     case ADD_EVENT:
       return state
     case UPDATE_EVENT:
-      return state
-    case CREATE_ERROR:
       return state
     case ADD_TAG:
       return state

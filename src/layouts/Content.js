@@ -8,6 +8,7 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import * as route from '../constants/routes';
 import PrivateRoute from '../functions/PrivateRoute';
+import Notify from '../components/Notification'
 
 
 export default function Main({ classes }) {
@@ -22,6 +23,7 @@ export default function Main({ classes }) {
         <Route path={route.SIGNIN} component={SignIn} />
         <Route path={route.SIGNUP} component={SignUp} />
       </Switch>
+      <Notify />
     </main>
   )
 }

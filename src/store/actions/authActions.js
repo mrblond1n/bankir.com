@@ -1,11 +1,14 @@
-import { LOGIN_SUCCESS, LOGIN_FAILED, SIGNOUT_SUCCESS, SIGNOUT_FAILED, SIGNUP_SUCCESS, SIGNUP_FAILED } from "../../constants/types";
+import { LOGIN_SUCCESS, SIGNOUT_SUCCESS, SIGNUP_SUCCESS, SET_NOTIFY } from "../../constants/types";
 
 export const signIn = ({ email, password }) => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => dispatch({ type: LOGIN_SUCCESS }))
-      .catch(error => dispatch({ type: LOGIN_FAILED, error }))
+      .catch(error => {
+        const notify = { text: error?.message || 'Unknow error', theme: 'error' }
+        dispatch({ type: SET_NOTIFY, notify })
+      })
   }
 }
 
@@ -13,7 +16,10 @@ export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
     firebase.auth().signOut().then(() => dispatch({ type: SIGNOUT_SUCCESS }))
-      .catch(error => dispatch({ type: SIGNOUT_FAILED, error }))
+      .catch(error => {
+        const notify = { text: error?.message || 'Unknow error', theme: 'error' }
+        dispatch({ type: SET_NOTIFY, notify })
+      })
   }
 }
 
@@ -31,6 +37,9 @@ export const signUp = (newUser) => {
         initials: newUser.firstName[0] + newUser.lastName[0]
       })
     }).then(() => dispatch({ type: SIGNUP_SUCCESS }))
-      .catch(error => dispatch({ type: SIGNUP_FAILED, error }))
+      .catch(error => {
+        const notify = { text: error?.message || 'Unknow error', theme: 'error' }
+        dispatch({ type: SET_NOTIFY, notify })
+      })
   }
 }
