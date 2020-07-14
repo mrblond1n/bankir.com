@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Form from '../UI/Form'
 import { KeyboardDatePicker } from '@material-ui/pickers';
-import { InputLabel, Select, MenuItem, Button, TextField, Grid } from '@material-ui/core';
+import { InputLabel, Select, MenuItem, Button, Grid } from '@material-ui/core';
 import TagField from './TagField'
+import NumberField from './NumberField'
 import moment from 'moment'
 
 export default function EventForm({ state, actionWithEvent }) {
@@ -33,14 +34,9 @@ export default function EventForm({ state, actionWithEvent }) {
         <KeyboardDatePicker disableToolbar variant="inline" margin="normal" value={event.date} onChange={setDateEvent} />
         <InputLabel id="method">Тип</InputLabel>
         <Select labelId="method" id="method" value={event.method}>
-          {selectedElems.map(el =>
-            <MenuItem value={el.name} key={el.name} onClick={() => setMethodEvent(el)}>
-              {el.title}
-            </MenuItem>
-          )}
+          {selectedElems.map(el => <MenuItem value={el.name} key={el.name} onClick={() => setMethodEvent(el)}>{el.title}</MenuItem>)}
         </Select>
-        <TextField label="Сумма" id="sum" onChange={e => changeEventState(e)} defaultValue={event.sum} />
-        {/* <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={event.tag} /> */}
+        <NumberField value={event.sum} setValue={changeEventState} />
         <TagField method={event.method} setValue={setTag} value={event.tag} />
         <Button type="submit" color='primary' disabled={disabled}>Отправить</Button>
       </Grid>
