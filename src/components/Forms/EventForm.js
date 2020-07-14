@@ -8,7 +8,8 @@ import moment from 'moment'
 export default function EventForm({ state, actionWithEvent }) {
   const [event, setEvent] = useState(state);
   const [disabled, setDisabled] = useState(false)
-  const changeEventState = e => setEvent({ ...event, [e.target.id]: e.target.value })
+  const changeEventState = (e) => setEvent({ ...event, [e.target.id]: e.target.value })
+  const setTag = val => setEvent({ ...event, tag: val })
   const setMethodEvent = el => setEvent({ ...event, method: el.name })
   const setDateEvent = date => setEvent({ ...event, date })
 
@@ -39,8 +40,8 @@ export default function EventForm({ state, actionWithEvent }) {
           )}
         </Select>
         <TextField label="Сумма" id="sum" onChange={e => changeEventState(e)} defaultValue={event.sum} />
-        <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={event.tag} />
-        <TagField method={event.method} />
+        {/* <TextField label="Тег" id="tag" onChange={e => changeEventState(e)} defaultValue={event.tag} /> */}
+        <TagField method={event.method} setValue={setTag} value={event.tag} />
         <Button type="submit" color='primary' disabled={disabled}>Отправить</Button>
       </Grid>
     </Form>

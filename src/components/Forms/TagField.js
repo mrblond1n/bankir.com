@@ -1,75 +1,57 @@
-/* eslint-disable no-use-before-define */
+// /* eslint-disable no-use-before-define */
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTag } from '../../store/actions/eventActions';
+import { useFirestoreConnect } from 'react-redux-firebase';
 
 const filter = createFilterOptions();
 
-export default function FreeSoloCreateOption({ method }) {
-  const [value, setValue] = React.useState(null);
-  const tags = useSelector(state => state.events.tags)
-  const currentTags = tags.filter(tag => tag.method === method);
+export default function FreeSoloCreateOption({ method, setValue, value }) {
+  const auth = useSelector(state => state.firebase.auth)
+  const remoteTags = useSelector((state) => state.firestore.ordered.tags)
+  const defaultTags = useSelector(state => state.events.tags);
+  const tags = remoteTags ? defaultTags.concat(remoteTags) : defaultTags;
+  const currentTags = tags.filter(tag => tag.method === method).map(({ title }) => title);
   const dispatch = useDispatch();
 
+  useFirestoreConnect([{
+    collection: 'tags',
+    where: [
+      ['authorId', '==', auth.uid],
+    ],
+  }])
+
+  const setTag = val => {
+    const title = val?.title || val
+    setValue(title);
+    if (!currentTags.includes(title) && title !== null) dispatch(addTag({ title, method }))
+  }
+
+  const nonExistTag = (options, params) => {
+    const filtered = filter(options, params);
+    if (params.inputValue !== '' && filtered.length === 0) {
+      filtered.push({ text: `Добавить тег "${params.inputValue}"`, title: params.inputValue })
+    }
+    return filtered;
+  }
 
   return (
     <Autocomplete
       value={value}
-      onChange={(event, newValue) => {
-        if (typeof newValue === 'string') {
-          setValue({
-            title: newValue,
-          });
-          // add newValue to server
-          dispatch(addTag({ title: newValue, method }))
-        } else if (newValue && newValue.inputValue) {
-          // Create a new value from the user input
-          setValue({
-            title: newValue.inputValue,
-          });
-          //add newValue.inputValue to server
-          dispatch(addTag({ title: newValue.inputValue, method }))
-        } else {
-          setValue(newValue);
-        }
-
-      }}
-      filterOptions={(options, params) => {
-        const filtered = filter(options, params);
-        // Suggest the creation of a new value
-        if (params.inputValue !== '') {
-          filtered.push({
-            inputValue: params.inputValue,
-            title: `Добавить тег "${params.inputValue}"`,
-          });
-        }
-        return filtered;
-      }}
+      onChange={(event, val) => setTag(val)}
+      filterOptions={(options, params) => nonExistTag(options, params)}
       selectOnFocus
       clearOnBlur
       handleHomeEndKeys
       id="tag"
-      options={currentTags}
-      getOptionLabel={(option) => {
-        // Value selected with enter, right from the input
-        if (typeof option === 'string') {
-          return option;
-        }
-        // Add "xxx" option created dynamically
-        if (option.inputValue) {
-          return option.inputValue;
-        }
-        // Regular option
-        return option.title;
-      }}
-      renderOption={(option) => option.title}
+      options={[...new Set(currentTags)]}
+      getOptionLabel={(option) => option?.text || option}
+      renderOption={(option) => option?.text || option}
       style={{ width: 300 }}
       freeSolo
-      renderInput={(params) => (
-        <TextField {...params} label="Тег" />
-      )}
+      renderInput={params => <TextField {...params} label="Тег" />}
     />
   );
 }

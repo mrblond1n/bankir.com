@@ -29,7 +29,6 @@ export const updateEvent = (id, event) => (dispatch, getState, { getFirebase, ge
 }
 
 export const addTag = tag => (dispatch, getState, { getFirebase, getFirestore }) => {
-  // dispatch({ type: SET_NOTIFY })
   const firestore = getFirestore();
   const authorId = getState().firebase.auth.uid;
   firestore.collection('tags').add({
