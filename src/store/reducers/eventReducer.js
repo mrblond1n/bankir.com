@@ -15,7 +15,10 @@ const INITIAL_STATE = {
     { title: "Госуслуги", method: "outcome" },
     { title: "Перевод и снятие наличных", method: "outcome" },
     { title: "Другое", method: "outcome" },
-    { title: "Одежда и аксессуары", method: "outcome" }
+    { title: "Одежда и аксессуары", method: "outcome" },
+    { title: 'Зарплата', method: 'income' },
+    { title: 'Кэшбек', method: 'income' },
+    { title: 'Подарок', method: 'income' }
   ]
 }
 
